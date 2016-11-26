@@ -1,12 +1,5 @@
 import scrapy
 
-class Yardsale():
-    def __init__(self, title, address, url):
-        self.title=title
-        self.address=address
-        self.url=url
-
-
 class YardsaleSpider(scrapy.Spider):
     name = 'yardsale'
     base_url = 'https://portland.craigslist.org'
@@ -32,9 +25,11 @@ class YardsaleSpider(scrapy.Spider):
 
     def parse_post(self, response):
         # do stuff with the post page
-        title = response.css('title::text').extract()
-        address = response.xpath('//div[@class="mapaddress"]').extract()
-        url = response.url
-        yardsale = Yardsale(title, address, url)
-        self.log("Found the title of post page: %s"%title)
+        post = {
+            'title': response.css('title::text').extract(),
+            'address': response.xpath('//div[@class="mapaddress"]').extract(),
+            'url': response.url
+        }
+        self.log("Found the title of post page: %s"%post['title'])
 
+        return post
