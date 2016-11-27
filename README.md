@@ -47,6 +47,6 @@ board for yardsalers
 
 ## Run scrapper
 
-cd ~/development/yardsale/gatherer
+cd ~/development/yardsale/server/gatherer
 `scrapy crawl yardsale -o post_data/yardsales.jl`
 

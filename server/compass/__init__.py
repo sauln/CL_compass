@@ -1,1 +1,2 @@
-from compass import *
+from .Compass import *
+from .Util import *
