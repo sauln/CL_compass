@@ -10,7 +10,6 @@ Device:
 - once it has the lng/lat of yardsale, it doesn't need to communicate
 with the server until it requests a new yardsale
 
-
 Server:
 * returns longitude and latitude of yardsale closest to device
 * if there are no yardsales close or all are old, try scraping new ones.
@@ -19,7 +18,6 @@ Server:
 it might be fun to keep track of user stats so you can show things like
 num of yardsales visited, num skipped, not missed out on. and have a leader 
 board for yardsalers
-
 
 #Yard sale app
 
@@ -45,8 +43,19 @@ board for yardsalers
   - automatically input current location -> yardsale directions
 - show distance, euclidean is okay, but should probably replace with maps distance 
 
-## Run scrapper
+## Run
 
-cd ~/development/yardsale/server/gatherer
-`scrapy crawl yardsale -o post_data/yardsales.jl`
+### The scrapper
+
+```
+cd $REPO\_ROOT/server/gatherer
+scrapy crawl yardsale -o post_data/yardsales.jl
+```
+
+### Setup for compass
+
+```
+cd $REPO\_ROOT/server
+python compass/ProcessSales.py
+```
 
