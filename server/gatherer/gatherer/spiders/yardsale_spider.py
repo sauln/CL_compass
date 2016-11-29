@@ -26,8 +26,9 @@ class YardsaleSpider(scrapy.Spider):
     def parse_post(self, response):
         # extract address data from post
         post = {
-            'title': response.css('title::text').extract(),
-            'address': response.xpath('//div[@class="mapaddress"]/text()').extract(),
+            'title': response.css('title::text').extract_first(),
+            'address':
+            response.xpath('//div[@class="mapaddress"]/text()').extract_first(),
             'url': response.url
         }
 
