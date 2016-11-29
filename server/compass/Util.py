@@ -11,7 +11,5 @@ def get_coords_of_address(address):
     req = requests.get('https://maps.googleapis.com/maps/api/geocode/json?',
                  params=payload)
 
-    import pdb; pdb.set_trace()
-
     coords = req.json()['results'][0]['geometry']['location']
     return coords
