@@ -18,7 +18,6 @@ def get_current_location():
     current_coords = Util.get_coords_of_address(home)
     return current_coords
 
-
 def get_direction_from_coords(current_coords, yardsale_location_coords):
     rise = yardsale_coords['lat'] - current_coords['lat']
     run = yardsale_coords['lng'] - current_coords['lng']

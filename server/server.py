@@ -1,4 +1,5 @@
 import numpy as np
+import json
 
 from flask import Flask
 from flask import request
@@ -34,7 +35,7 @@ def get_closest_sale():
         # load all sales and find nearest sale
         current_location = np.array([lat, lng])
         closest = min(post_data, key=lambda x: distance_sale(current_location, x))
-        return str(closest)
+        return json.dumps(closest)
     else:
         return "No coordinates"
 
