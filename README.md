@@ -6,6 +6,10 @@ in the city or w/in N miles.
 - Point towards sale - interface with handheld device's internal compass to find 
 direction w.r.t. North. 
 
+
+
+
+
 **Device:**
 * has own longitude and latitude
 * asks for longitude and latitude of the yardsale closest to self
@@ -70,8 +74,4 @@ python server/compass/ProcessSales.py
 cd $REPO_ROOT
 python server/server.py
 ```
-
-
-
-
 

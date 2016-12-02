@@ -26,13 +26,17 @@ def home():
 
 @app.route("/closest_sale", methods=['GET'])
 def get_closest_sale():
-    lat = float(request.args.get('lat', ''))
-    lng = float(request.args.get('lng', ''))
+    lat = request.args.get('lat', '')
+    lng = request.args.get('lng', '')
 
-    # load all sales and find nearest sale
-    current_location = np.array([lat, lng])
-    closest = min(post_data, key=lambda x: distance_sale(current_location, x))
-    return str(closest)
+    if lat and lng:
+        lat, lng = float(lat), float(lng)
+        # load all sales and find nearest sale
+        current_location = np.array([lat, lng])
+        closest = min(post_data, key=lambda x: distance_sale(current_location, x))
+        return str(closest)
+    else:
+        return "No coordinates"
 
 if __name__ == "__main__":
     app.run(debug=True)
