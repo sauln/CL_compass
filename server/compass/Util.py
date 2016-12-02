@@ -1,6 +1,7 @@
 import requests
-
-key = 'AIzaSyBIKDNUbNqHb5O5elHRMzq-_9sYDAqBid8'
+#from .keys import key
+from .keys import key
+import json
 
 def get_coords_of_address(address):
     ''' use google api to get long/lat from plain english address
@@ -13,3 +14,17 @@ def get_coords_of_address(address):
 
     coords = req.json()['results'][0]['geometry']['location']
     return coords
+
+def save_post_data(post_data, outfilename):
+    with open(outfilename, 'w') as f:
+        for post in post_data:
+            f.write(json.dumps(post)+"\n")
+
+def load_post_data(infilename):
+    post_data = []
+    with open(infilename, 'r') as f:
+        for line in f:
+            post_data.append(json.loads(line))
+
+    return post_data
+

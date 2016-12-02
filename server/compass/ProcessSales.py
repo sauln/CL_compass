@@ -2,29 +2,30 @@
     get the longitude and latitude
 '''
 import Util
-import json
 
 # load the data as JSON lines
 # get lng/lat for each post's address
 # save as new JSON lines so compass can access
 
-infilename = 'gatherer/post_data/yardsales.jl'
-print("Loading json data from " + infilename)
 
-post_data = []
-with open(infilename, 'r') as f:
-    for line in f:
-        post_data.append(json.loads(line))
+def AttachGeoData():
+    infilename = 'server/gatherer/post_data/yardsales.jl'
+    print("Loading json data from " + infilename)
 
-print("Finding address coordinates for %s address" % post_data.__len__())
+    post_data = Util.load_post_data(infilename)
 
-for post in post_data:
-    post['coords'] = Util.get_coords_of_address(post['address'])
+    print("Finding address coordinates for %s address" % post_data.__len__())
 
-outfilename = 'compass/sales/yardsales.jl'
-with open(outfilename, 'w') as f:
     for post in post_data:
-        f.write(json.dumps(post)+"\n")
+        post['coords'] = Util.get_coords_of_address(post['address'])
 
-print("Printing new json to " + outfilename)
+    outfilename = 'server/compass/sales/yardsales.jl'
+
+    Util.save_post_data(post_data, outfilename)
+
+    print("Printing new json to " + outfilename)
+
+if __name__=="__main__":
+    AttachGeoData()
+
 

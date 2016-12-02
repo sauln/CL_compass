@@ -6,7 +6,7 @@ Some client side code is mixed in here currently.
 '''
 
 import math
-import Util
+from .Util import *
 
 # get current location
 # get closest yardsale
@@ -17,6 +17,7 @@ def get_current_location():
     home = '1600+Amphitheatre+Parkway,+Mountain+View,+CA'
     current_coords = Util.get_coords_of_address(home)
     return current_coords
+
 
 def get_direction_from_coords(current_coords, yardsale_location_coords):
     rise = yardsale_coords['lat'] - current_coords['lat']

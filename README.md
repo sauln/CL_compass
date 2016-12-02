@@ -61,7 +61,17 @@ scrapy crawl yardsale -o post_data/yardsales.jl
 ## Setup for compass
 
 ```
-cd $REPO_ROOT/server
-python compass/ProcessSales.py
+cd $REPO_ROOT
+python server/compass/ProcessSales.py
 ```
+
+## Run server
+```
+cd $REPO_ROOT
+python server/server.py
+```
+
+
+
+
 
