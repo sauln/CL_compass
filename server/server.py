@@ -3,12 +3,14 @@ import json
 
 from flask import Flask
 from flask import request
-import compass
+
+#from compass import *
+import sale_data
 
 app = Flask(__name__)
 
-filename = 'server/compass/sales/yardsales.jl'
-post_data = compass.load_post_data(filename)
+filename = 'server/sale_data/yardsales.jl'
+post_data = sale_data.load_post_data(filename)
 
 def distance(x, y):
     return np.linalg.norm(x-y)
