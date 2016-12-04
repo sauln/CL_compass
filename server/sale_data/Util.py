@@ -1,9 +1,8 @@
 import requests
 #from .keys import key
-from .keys import key
 import json
 
-def get_coords_of_address(address):
+def get_coords_of_address(address, key):
     ''' use google api to get long/lat from plain english address
     '''
     payload = {'address': address,

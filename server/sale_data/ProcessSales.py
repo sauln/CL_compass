@@ -2,6 +2,7 @@
     get the longitude and latitude
 '''
 import Util
+from keys import key
 
 # load the data as JSON lines
 # get lng/lat for each post's address
@@ -17,9 +18,9 @@ def AttachGeoData():
     print("Finding address coordinates for %s address" % post_data.__len__())
 
     for post in post_data:
-        post['coords'] = Util.get_coords_of_address(post['address'])
+        post['coords'] = Util.get_coords_of_address(post['address'], key)
 
-    outfilename = 'server/compass/sales/yardsales.jl'
+    outfilename = 'server/sale_data/yardsales.jl'
 
     Util.save_post_data(post_data, outfilename)
 
