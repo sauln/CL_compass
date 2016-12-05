@@ -3,7 +3,7 @@ import scrapy
 class YardsaleSpider(scrapy.Spider):
     name = 'yardsale'
     base_url = 'https://portland.craigslist.org'
-    date = "2016-11-27"
+    date = "2016-12-4"
 
     yardsale_url = [
         base_url + '/search/gms'
@@ -20,7 +20,7 @@ class YardsaleSpider(scrapy.Spider):
         all_links = response.xpath('//a[@class="result-title hdrlnk"]/@href').extract()
         good_links = filter(lambda x: "craigslist.org" not in x, all_links)
 
-        for url in good_links[:2]:
+        for url in good_links:
             yield scrapy.Request(self.base_url+url, callback=self.parse_post)
 
     def parse_post(self, response):

@@ -17,8 +17,15 @@ def AttachGeoData():
 
     print("Finding address coordinates for %s address" % post_data.__len__())
 
+    pid = 0
+
     for post in post_data:
+        print(post)
         post['coords'] = Util.get_coords_of_address(post['address'], key)
+        post['id'] = pid
+        pid += 1
+
+    post_data = filter(post_data, lambda x: x['coords'] == "OK")
 
     outfilename = 'server/sale_data/yardsales.jl'
 

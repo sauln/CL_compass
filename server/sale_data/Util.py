@@ -9,9 +9,13 @@ def get_coords_of_address(address, key):
                'key':key
     }
     req = requests.get('https://maps.googleapis.com/maps/api/geocode/json?',
-                 params=payload)
+                 params=payload).json()
 
-    coords = req.json()['results'][0]['geometry']['location']
+    # should a monad be used?
+    if req['status'] == 'OK':
+        coords = req['results'][0]['geometry']['location']
+    else:
+        coords = None
     return coords
 
 def save_post_data(post_data, outfilename):
