@@ -41,6 +41,7 @@ def get_closest_sale():
     else:
         return "No coordinates"
 
+
 if __name__ == "__main__":
     app.run(debug=True)
 
