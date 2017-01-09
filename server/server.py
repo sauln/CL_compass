@@ -20,6 +20,8 @@ def distance_sale(x, sale):
     d = distance(x, sale_loc)
     return distance(x, sale_loc)
 
+
+
 @app.route("/")
 def home():
     return "<title>This will describe the API that is exposed</title>\
