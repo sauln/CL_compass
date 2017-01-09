@@ -24,17 +24,11 @@ class User():
 def add_noise(singleton):
     return singleton + (5*np.random.random() - 2.5)
 
+
 current_location = {'lat': 0, 'lng': 0}
 user = User(current_location)
-
 res = requests.get('http://127.0.0.1:5000/closest_sale',
                    params=user.current_location).json()
-
-
-# deny this first post 
-
-
-
 
 print("Closest yard sale to me is at {}".format(res['coords']))
 compass = Compass.Compass(res['coords'])
