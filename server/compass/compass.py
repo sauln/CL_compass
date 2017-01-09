@@ -55,11 +55,6 @@ class TestCompass(unittest.TestCase):
             direction = c.get_direction_from_coords(start)
             self.assertEqual(direction, end[1])
 
-
-
-
 if __name__=="__main__":
     unittest.main()
-
-
 
