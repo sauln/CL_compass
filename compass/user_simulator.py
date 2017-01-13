@@ -6,23 +6,28 @@ import numpy as np
 from compass import Compass
 from user import User
 
+# so we don't follow a straight line
 def add_noise(singleton):
     return singleton + (5*np.random.random() - 2.5)
 
+# init user at (0,0)
 def build_user():
     current_location = {'lat': 0, 'lng': 0}
     new_user = User(current_location)
     return new_user
 
+# set a compass towards the sale
 def build_compass(sale):
     compass = Compass(sale['coords'])
     return compass
 
+# 
 def get_closest_sale(user):
     closest_sale = requests.get('http://127.0.0.1:5000/closest_sale',
                        params=user.current_location).json()
     print("Closest yard sale to me is at {}".format(closest_sale['coords']))
     return closest_sale
+
 
 def follow_compass_towards_sale(user, compass):
     for i in range(10):
