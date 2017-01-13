@@ -1,5 +1,4 @@
 import unittest
-
 import requests
 
 class TestClosest(unittest.TestCase):
@@ -11,10 +10,6 @@ class TestClosest(unittest.TestCase):
         res = requests.get('http://127.0.0.1:5000/closest_sale')
         self.assertIn("No coordinates", str(res.content))
 
-
 if __name__=="__main__":
     unittest.main()
-
-
-
 

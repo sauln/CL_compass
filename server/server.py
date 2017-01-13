@@ -4,7 +4,6 @@ import json
 from flask import Flask
 from flask import request
 
-#from compass import *
 import sale_data
 
 app = Flask(__name__)
@@ -19,8 +18,6 @@ def distance_sale(x, sale):
     sale_loc = np.array( [sale['coords']['lat'], sale['coords']['lng']] )
     d = distance(x, sale_loc)
     return distance(x, sale_loc)
-
-
 
 @app.route("/")
 def home():
@@ -42,7 +39,6 @@ def get_closest_sale():
         return json.dumps(closest)
     else:
         return "No coordinates"
-
 
 if __name__ == "__main__":
     app.run(debug=True)
